@@ -25,6 +25,14 @@ describe('My Login application', () => {
         await LoginPage.btnMenu.click();
         await LoginPage.btnLogout.click();
     });
+
+    it('Should not login with the blocked user', async () => {       
+        await LoginPage.inputUsername.setValue("locked_out_user");
+        await LoginPage.inputPassword.setValue("secret_sauce")
+        await LoginPage.btnLogin.click();
+        await LoginPage.errorMsgTwo.waitForDisplayed({timeout: 10000});
+        await expect(LoginPage.errorMsgTwo).toHaveText('Epic sadface: Sorry, this user has been locked out.');
+    });
 });
 
 

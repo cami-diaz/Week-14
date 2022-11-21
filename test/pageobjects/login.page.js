@@ -28,6 +28,11 @@ class LoginPage {
 	get btnLogout () {
         return $('#logout_sidebar_link');
     }
+	
+	get errorMsgTwo () {
+        return $('#login_button_container > div > form > div.error-message-container.error > h3');
+    }
+	
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
