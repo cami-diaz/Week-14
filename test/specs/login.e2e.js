@@ -4,7 +4,8 @@ describe('My Login application', () => {
     beforeAll ('Navigate to url', () => {
         browser.url("https://www.saucedemo.com/");
     })
-    it('Should not login with empty inputs', async () => {       
+    it('Should not login with empty inputs', async () => {      
+        await LoginPage.bot.isDisplayedInViewport();
         await LoginPage.inputUsername.setValue("");
         await LoginPage.inputPassword.setValue("");
         await LoginPage.btnLogin.click();
@@ -32,6 +33,20 @@ describe('My Login application', () => {
         await LoginPage.btnLogin.click();
         await LoginPage.errorMsgTwo.waitForDisplayed({timeout: 10000});
         await expect(LoginPage.errorMsgTwo).toHaveText('Epic sadface: Sorry, this user has been locked out.');
+    });
+
+    it('Should login with right credentials and logut successfully - User: problem_user', async () => {       
+        await LoginPage.login('problem_user', 'secret_sauce');
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+        await LoginPage.btnMenu.click();
+        await LoginPage.btnLogout.click();
+    });
+
+    it('Should login with right credentials and logut successfully - User: performance_glitch_user', async () => {       
+        await LoginPage.login('performance_glitch_user', 'secret_sauce');
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+        await LoginPage.btnMenu.click();
+        await LoginPage.btnLogout.click();
     });
 });
 
