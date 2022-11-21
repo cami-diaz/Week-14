@@ -17,7 +17,13 @@ describe('My Login application', () => {
         await LoginPage.btnLogin.click();
         await LoginPage.errorMsg.waitForDisplayed({timeout: 10000});
         await expect(LoginPage.errorMsg).toHaveText('Epic sadface: Username and password do not match any user in this service');
-        //await LoginPage.login('', '');
+    });
+
+    it('Should login with right credentials and logout successfully', async () => {       
+        await LoginPage.login('standard_user', 'secret_sauce');
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html');
+        await LoginPage.btnMenu.click();
+        await LoginPage.btnLogout.click();
     });
 });
 
