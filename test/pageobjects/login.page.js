@@ -36,7 +36,54 @@ class LoginPage {
 	get bot () {
 		return $('.bot_column');
 	}
+
+    get btnRemove () {
+        return $('#remove-sauce-labs-bolt-t-shirt');
+    }
 	
+    get btnAddToCart () {
+        return $('#add-to-cart-sauce-labs-backpack');
+    }
+
+    get btnCart () {
+        return $('.shopping_cart_link');
+    }
+
+    get btnCheckout () {
+        return $('#checkout');
+    }
+
+    get inputFirstName () {
+        return $('#first-name');
+    }
+
+    get inputLastName () {
+        return $('#last-name');
+    }
+
+    get inputZip () {
+        return $('#postal-code');
+    }
+
+    get btnContinue () {
+        return $('#continue');
+    }
+
+    get btnFinish () {
+        return $('#finish');
+    }
+
+    get btnBackHome () {
+        return $('#back-to-products');
+    }
+
+    get errorMsgPurchase () {
+        return $('#checkout_info_container > div > form > div.checkout_info > div.error-message-container.error');
+    }
+
+    get btnCancel () {
+        return $('#cancel');
+    }
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
